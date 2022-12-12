@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
-import { brainGamesGreeting, mainGreeting, userGreetingPhrase } from '../src/cli.js';
+import {
+  userNameQuestion,
+} from '../src/index.js';
 
-brainGamesGreeting(mainGreeting, userGreetingPhrase);
+import {
+  brainGamesGreeting,
+} from '../src/cli.js';
+
+brainGamesGreeting(userNameQuestion);
