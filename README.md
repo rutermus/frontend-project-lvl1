@@ -3,5 +3,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/ee10b0dcf366972ca296/maintainability)](https://codeclimate.com/github/rutermus/frontend-project-lvl1/maintainability)
 
-### Asciinema
+### Asciinema 1
 [![asciicast](https://asciinema.org/a/MEFNXSiOMsACkMvX7mOUw7VZG.svg)](https://asciinema.org/a/MEFNXSiOMsACkMvX7mOUw7VZG)
+
+### Brain-calc
+[![asciicast](https://asciinema.org/a/rxn7g6IuI5lhfWgHDjosMyHLq.svg)](https://asciinema.org/a/rxn7g6IuI5lhfWgHDjosMyHLq)
