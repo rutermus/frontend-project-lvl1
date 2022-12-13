@@ -44,18 +44,15 @@ export const getRandomArbitrary = (min, max) => Math.floor(Math.random() * (max 
 export const roundedSqrt = (num) => Math.ceil(Math.sqrt(num));
 
 const isNumPrime = (num) => {
-  let result = 'yes';
   if (num <= 0 || num === 1) {
-    result = 'no';
-    return result;
+    return 'no';
   }
   for (let i = 2; i <= roundedSqrt(num); i += 1) {
     if (num % i === 0 && num !== i) {
-      result = 'no';
-      break;
+      return 'no';
     }
   }
-  return result;
+  return 'yes';
 };
 
 export const calculate = (operator, firstOperand, secondOperand) => {
