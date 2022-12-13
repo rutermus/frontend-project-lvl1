@@ -163,6 +163,7 @@ export const brainCalcGame = (name) => {
 };
 
 export const brainGcdGame = (name) => {
+  getTask(brainGcdTask);
   for (let i = 0; i < gamesNumber; i += 1) {
     const firstNum = getRandomInt(100);
     const secondNum = getRandomInt(100);
