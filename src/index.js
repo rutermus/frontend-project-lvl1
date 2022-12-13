@@ -4,6 +4,7 @@ import readlineSync from 'readline-sync';
 export const brainEvenTask = 'Answer "yes" if the number is even, otherwise answer "no".';
 export const brainCalcTask = 'What is the result of the expression?';
 export const brainGcdTask = 'Find the greatest common divisor of given numbers.';
+export const brainProgressionTask = 'What number is missing in the progression?';
 // end Game tasks
 
 // Game phrases and messages
@@ -31,6 +32,11 @@ export const getQuestion = (firstItem, secondItem, thirdItem) => {
 
 // Games functions
 export const getRandomInt = (max) => Math.floor(Math.random() * max);
+// result => from 0 to (max - 1)
+
+export const getRandomArbitrary = (min, max) => Math.floor(Math.random() * (max - min) + min);
+// result => from min to (max - 1)
+
 export const calculate = (operator, firstOperand, secondOperand) => {
   let result = 0;
   if (operator === '+') {
@@ -44,6 +50,7 @@ export const calculate = (operator, firstOperand, secondOperand) => {
   }
   return result;
 };
+
 export const getGreatestCommonDivisor = (num1, num2) => {
   let firstNum = num1;
   let secondNum = num2;
@@ -55,6 +62,30 @@ export const getGreatestCommonDivisor = (num1, num2) => {
     }
   }
   return firstNum + secondNum;
+};
+
+export const makeProgression = (firstItem, step, length) => {
+  const progression = [];
+  let item = firstItem;
+  for (let i = 0; i < length; i += 1) {
+    progression.push(item);
+    item += step;
+  }
+  return progression;
+};
+
+export const hideItem = (arr, hiddenItemIndex) => {
+  let result = '';
+  const hiddenItem = '..';
+
+  for (let i = 0; i < arr.length; i += 1) {
+    if (i === hiddenItemIndex) {
+      result += `${hiddenItem} `;
+    } else {
+      result += `${arr[i]} `;
+    }
+  }
+  return result;
 };
 // end Games functions
 
@@ -117,6 +148,37 @@ export const brainGcdGame = (name) => {
     const correctAnswer = getGreatestCommonDivisor(firstNum, secondNum);
 
     getQuestion(firstNum, secondNum);
+    const userAnswer = getAnswer(userAnswerMessage);
+    const userAnswerToNum = Number(userAnswer);
+
+    if (userAnswerToNum === correctAnswer) {
+      correctAnswerMessage();
+    }
+    if (userAnswerToNum !== correctAnswer) {
+      wrongAnswerMessage(userAnswer, correctAnswer);
+      userLoseMessage(name);
+      break;
+    }
+    if (i === 2) {
+      userWinMessage(name);
+    }
+  }
+};
+
+export const brainProgressionGame = (name) => {
+  getTask(brainProgressionTask);
+
+  for (let i = 0; i < 3; i += 1) {
+    const firstItem = getRandomInt(100);
+    const progressionLength = getRandomArbitrary(5, 11);
+    const progressionStep = getRandomArbitrary(2, 6);
+    const hiddenItemIndex = getRandomInt(progressionLength);
+
+    const progression = makeProgression(firstItem, progressionStep, progressionLength);
+    const taskCondition = hideItem(progression, hiddenItemIndex);
+    const correctAnswer = progression[hiddenItemIndex];
+
+    getQuestion(taskCondition);
     const userAnswer = getAnswer(userAnswerMessage);
     const userAnswerToNum = Number(userAnswer);
 
