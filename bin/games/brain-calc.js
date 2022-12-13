@@ -1,13 +1,11 @@
 #!/usr/bin/env node
 
+import brainGamesGreeting from '../../src/cli.js';
+
 import {
   userNameQuestion,
   brainCalcGame,
 } from '../../src/index.js';
-
-import {
-  brainGamesGreeting,
-} from '../../src/cli.js';
 
 const userName = brainGamesGreeting(userNameQuestion);
 
